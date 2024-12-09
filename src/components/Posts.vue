@@ -1,32 +1,15 @@
 <template>
-  <h1 class="title">Как уютно встретить Новый год</h1>
   <div class="post" v-for="post in posts" v-bind:key="post.id">
     <div class="post__title">{{ post.title }}</div>
     <div class="post__subtitle">
       {{ post.subtitle }}
     </div>
   </div>
-  <form class="form" @submit.prevent>
-    <input
-      class="form__input"
-      type="text"
-      placeholder="Введите название"
-      v-bind:value="inputTitle"
-      @input="inputTitle = $event.target.value"
-    />
-    <input
-      class="form__input"
-      type="text"
-      placeholder="Введите описание"
-      v-bind:value="inputSubtitle"
-      @input="inputSubtitle = $event.target.value"
-    />
-    <button class="form__btn" @click="createPost">Создать</button>
-  </form>
 </template>
 
 <script>
 export default {
+  
   name: "App",
   data() {
     return {
@@ -82,92 +65,9 @@ export default {
       this.inputSubtitle = event.target.value;
       console.log(event);
     },
-    createPost() {
-      const newPost = {
-        id: Date.now(),
-        title: this.inputTitle,
-        subtitle: this.inputSubtitle,
-      };
-
-      this.posts.push(newPost);
-      this.inputSubtitle = "";
-      this.inputTitle = "";
-    },
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-  font-family: "Nunito", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  background-image: linear-gradient(90deg, #b8889b 11%, #68a5ed 94%);
-  max-width: 100vw;
-  height: 100%;
-}
-
-.title {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 2rem;
-  font-family: "Nunito", sans-serif;
-  padding-top: 2rem;
-}
-.post {
-  margin: 1rem;
-  border: 0.1rem solid lightblue;
-}
-
-.post__title {
-  font-size: 2rem;
-  font-weight: 500;
-}
-
-.post__subtitle {
-  font-size: 1.5rem;
-}
-.form {
-  padding-top: 1rem;
-  margin: 0 auto;
-  width: 50vw;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.form__input {
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-bottom: 1px solid lightblue;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.form__btn {
-  width: 100%;
-  height: 100%;
-  border-radius: 1px;
-  background-color: transparent;
-  border: 1px solid lightblue;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  padding: 0.6rem;
-}
-
-.form__btn:hover {
-  cursor: pointer;
-  transition: all ease-in 1ms;
-  opacity: 0.7;
-}
+<style >
+  
 </style>
